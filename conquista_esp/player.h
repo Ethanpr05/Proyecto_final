@@ -5,11 +5,12 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QKeyEvent>
+#include "sprite.h"
 
 class Player : public QObject, public QGraphicsRectItem, public Movement {
     Q_OBJECT
 public:
-    Player();
+    Player(const QString &picture);
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
@@ -22,6 +23,8 @@ private:
     const qreal gravity = 0.5;
     void checkCollisions();
     void handleCollisionWithEnemy();
+
+    sprite *player;
 };
 
 #endif // PLAYER_H
