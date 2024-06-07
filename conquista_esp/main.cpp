@@ -23,12 +23,12 @@ int main(int argc, char *argv[]) {
     scene->addItem(ground);
 
     // Añadir jugador
-    Player *player = new Player();
+    Player *player = new Player(":/imagenes/player.png");
     player->setPos(100, 510);
     scene->addItem(player);
 
     // Añadir enemigo
-    Enemy *enemy = new Enemy(2);
+    Enemy *enemy = new Enemy(2, ":/imagenes/enemigoDI-removebg-preview.png");
     enemy->setPos(400, 510);
     scene->addItem(enemy);
 

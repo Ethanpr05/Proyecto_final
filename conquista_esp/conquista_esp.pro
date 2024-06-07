@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     movement.cpp \
-    player.cpp
+    player.cpp \
+    sprite.cpp
 
 HEADERS += \
     enemigo.h \
@@ -22,7 +23,8 @@ HEADERS += \
     ground.h \
     mainwindow.h \
     movement.h \
-    player.h
+    player.h \
+    sprite.h
 
 FORMS += \
     mainwindow.ui

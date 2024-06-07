@@ -6,10 +6,16 @@
 #include <QBrush>
 #include <QList>
 
-Player::Player (): Movement(5), left(false), right(false), jumping(false),
+Player::Player (const QString &picture): Movement(5), left(false), right(false), jumping(false),
     velocityY(0) {
-    setRect(0, 0, 50, 50);
-    setBrush(QBrush(Qt::blue));
+    //setRect(0, 0, 50, 50);
+    //setBrush(QBrush(Qt::blue));
+    player = new sprite(picture);
+    player->setParentItem(this);
+    setRect(-31, -8, 70, 60); // Establece el tamaño del enemigo
+    player->setfilas(0);
+    player->setY(20);
+    setPen(Qt::NoPen);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
 
@@ -37,9 +43,21 @@ void Player::move() {
     Movement::update(x);
     setX(x);
     // Movimiento vertical (salto y gravedad)
+    if(Movement::left){
+        player->setfilas(200);}
+    if(Movement::right){
+        player->setfilas(100);}
     if (jumping) {
         setY(y() + velocityY);
         velocityY += gravity;
+        if(Movement::left){
+            player->setfilas(300);}
+        else{
+            player->setfilas(400);
+        }
+    }
+    if (jumping==false && Movement::left==false && Movement::right==false){
+        player->setfilas(0);
     }
 
     checkCollisions();

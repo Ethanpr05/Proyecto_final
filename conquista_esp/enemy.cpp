@@ -6,12 +6,16 @@
 #include <QGraphicsScene>
 
 
-Enemy::Enemy(int speed)
+Enemy::Enemy(int speed, const QString &picture)
     : Movement(speed)
 {
-
-    setRect(0, 0, 50, 50);
-    setBrush(QBrush(Qt::red));
+    enemy = new sprite(picture);
+    enemy->setParentItem(this);
+    setRect(-37, -14, 70, 65); // Establece el tamaño del enemigo
+    enemy->setY(5);
+    setPen(Qt::NoPen);
+    //setRect(0, 0, 50, 50);
+    //setBrush(QBrush(Qt::red));
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Enemy::move);
     timer->start(16);
@@ -41,8 +45,37 @@ void Enemy::checkCollisions() {
     for (QGraphicsItem* item : collidingItems) {
         if (typeid(*item) == typeid(Player)) {
             direction *= -1;
+            changeSprite();
         } else if (typeid(*item) == typeid(Ground)&& (pos().x() < 0 || pos().x() > 790)) {
             direction *= -1;
+            changeSprite();
         }
+    }
+}
+
+void Enemy::changeSprite()
+{
+    // Guardar la posición actual
+    //QPointF currentPosition = enemy->pos();
+
+    // Eliminar el sprite anterior
+    /*scene()->removeItem(enemy);
+    delete enemy;
+
+    // Crear un nuevo sprite
+    enemy = new sprite();
+    enemy->setParentItem(this); // Hacer que el nuevo sprite sea hijo del enemigo
+*/
+    // Ajustar la posición del nuevo sprite
+    //enemy->setPos(currentPosition);
+
+    if(direction<0){
+        // Cambiar filas del nuevo sprite
+        enemy->setfilas(0);
+        enemy->setY(5);
+    }
+    if(direction>0){
+        enemy->setfilas(100);
+        enemy->setY(31);
     }
 }

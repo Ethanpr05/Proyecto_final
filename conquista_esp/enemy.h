@@ -1,15 +1,15 @@
-// enemy.h
 #ifndef ENEMY_H
 #define ENEMY_H
 
 #include "movement.h"
+#include "sprite.h"
 #include <QGraphicsRectItem>
 #include <QObject>
 
 class Enemy : public QObject, public QGraphicsRectItem, public Movement {
     Q_OBJECT
 public:
-    explicit Enemy(int speed);
+    explicit Enemy(int speed, const QString &picture);
 
 public slots:
     void move();
@@ -17,6 +17,9 @@ public slots:
 private:
     short int direction;
     void checkCollisions();
+    void changeSprite();
+
+    sprite *enemy;
 };
 
 #endif // ENEMY_H
