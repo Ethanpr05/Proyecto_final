@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>donalPNG.png</file>
+        <file>enemigoDI-removebg-preview.png</file>
+    </qresource>
+</RCC>

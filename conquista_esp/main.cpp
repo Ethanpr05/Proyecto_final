@@ -1,12 +1,40 @@
 #include <QApplication>
-#include "game.h"
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include "player.h"
+#include "enemy.h"
+#include "ground.h"
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+    QApplication a(argc, argv);
 
-    Game game;
-    game.resize(800, 600);
-    game.show();
+    QGraphicsScene *scene = new QGraphicsScene();
+    scene->setSceneRect(0, 0, 800, 600);
 
-    return app.exec();
+    QPixmap backgroundPixmap(":/imagenes/background.jpg");
+    QPixmap scaledBackground = backgroundPixmap.scaled(scene->width(), scene->height());
+    QGraphicsPixmapItem *background = new QGraphicsPixmapItem(scaledBackground);
+    background->setPos(0, 0);
+    scene->addItem(background);
+    // Añadir suelo
+    Ground *ground = new Ground();
+    ground->setPos(0, 560);
+    scene->addItem(ground);
+
+    // Añadir jugador
+    Player *player = new Player();
+    player->setPos(100, 510);
+    scene->addItem(player);
+
+    // Añadir enemigo
+    Enemy *enemy = new Enemy(2);
+    enemy->setPos(400, 510);
+    scene->addItem(enemy);
+
+    QGraphicsView *view = new QGraphicsView(scene);
+    view->setFixedSize(803, 603);
+    view->show();
+
+    return a.exec();
 }
