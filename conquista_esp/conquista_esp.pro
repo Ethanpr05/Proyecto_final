@@ -9,21 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    enemigo.cpp \
-    game.cpp \
-    level.cpp \
+    enemy.cpp \
+    ground.cpp \
     main.cpp \
     mainwindow.cpp \
-    movimiento.cpp \
-    personajeprincipal.cpp
+    movement.cpp \
+    player.cpp
 
 HEADERS += \
     enemigo.h \
-    game.h \
-    level.h \
+    enemy.h \
+    ground.h \
     mainwindow.h \
-    movimiento.h \
-    personajeprincipal.h
+    movement.h \
+    player.h
 
 FORMS += \
     mainwindow.ui
@@ -32,3 +31,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
+
+RESOURCES += \
+    imagenes.qrc
