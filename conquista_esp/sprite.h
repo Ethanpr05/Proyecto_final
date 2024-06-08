@@ -11,7 +11,7 @@ class sprite : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit sprite(const QString &picture, QObject *parent = nullptr);
+    explicit sprite(const QString &picture, float _limite, QObject *parent = nullptr);
 
     QTimer *timer;
     QPixmap *pixmap;
@@ -20,6 +20,7 @@ public:
 
     float ancho;
     float alto;
+    float limite;
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

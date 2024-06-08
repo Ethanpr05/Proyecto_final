@@ -29,12 +29,12 @@ int main(int argc, char *argv[]) {
     view->setFixedSize(803, 603);
 
     // Añadir jugador
-    Player *player = new Player(":/imagenes/player.png", view);
+    Player *player = new Player(":/imagenes/player.png", 600, view);
     player->setPos(view->width()/2 - player->rect().width()/2, view->height() - player->rect().height() - 10);
     scene->addItem(player);
 
     // Añadir enemigo
-    Enemy *enemy = new Enemy(2, ":/imagenes/enemigoDI-removebg-preview.png");
+    Enemy *enemy = new Enemy(2, ":/imagenes/enemigomejor-removebg-preview.png", 400);
     enemy->setPos(200, 510);
     scene->addItem(enemy);
 

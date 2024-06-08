@@ -6,13 +6,14 @@
 #include <QGraphicsScene>
 
 
-Enemy::Enemy(int speed, const QString &picture)
+Enemy::Enemy(int speed, const QString &picture, float limite)
     : Movement(speed)
 {
-    enemy = new sprite(picture);
+    enemy = new sprite(picture, limite);
     enemy->setParentItem(this);
     setRect(-37, -14, 70, 65); // Establece el tamaño del enemigo
-    enemy->setY(5);
+    enemy->setY(18);
+    enemy->setfilas(100);
     setPen(Qt::NoPen);
     //setRect(0, 0, 50, 50);
     //setBrush(QBrush(Qt::red));
@@ -71,11 +72,11 @@ void Enemy::changeSprite()
 
     if(direction<0){
         // Cambiar filas del nuevo sprite
-        enemy->setfilas(0);
-        enemy->setY(5);
+        enemy->setfilas(100);
+        enemy->setY(18);
     }
     if(direction>0){
-        enemy->setfilas(100);
-        enemy->setY(31);
+        enemy->setfilas(0);
+        enemy->setY(14);
     }
 }

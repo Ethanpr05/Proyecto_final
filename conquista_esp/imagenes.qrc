@@ -3,9 +3,9 @@
         <file>imagenes/fondo.jpg</file>
         <file>imagenes/ground.jpg</file>
         <file>imagenes/background.jpg</file>
-        <file>imagenes/enemigoDI-removebg-preview.png</file>
         <file>imagenes/player.png</file>
         <file>imagenes/Pit_Trap_Spikes.png</file>
         <file>imagenes/gold.png</file>
+        <file>imagenes/enemigomejor-removebg-preview.png</file>
     </qresource>
 </RCC>

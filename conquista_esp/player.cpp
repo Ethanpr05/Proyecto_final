@@ -9,10 +9,10 @@
 #include <QList>
 #include <QGraphicsView>
 
-Player::Player(const QString &picture, QGraphicsView *view)
+Player::Player(const QString &picture, float limite, QGraphicsView *view)
     : Movement(5), left(false), right(false), jumping(false),
     velocityY(0), lives(30), view(view) {
-    player = new sprite(picture);
+    player = new sprite(picture, limite);
     player->setParentItem(this);
     setRect(-31, -8, 70, 60); // Establece el tamaño del jugador
     player->setfilas(0);
