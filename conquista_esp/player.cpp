@@ -9,10 +9,10 @@
 #include <QList>
 #include <QGraphicsView>
 
-Player::Player(const QString &picture, float limite, QGraphicsView *view)
+Player::Player(const QString &picture, float limite, float columnas, QGraphicsView *view)
     : Movement(5), left(false), right(false), jumping(false),
     velocityY(0), lives(30), view(view) {
-    player = new sprite(picture, limite);
+    player = new sprite(picture, limite, columnas);
     player->setParentItem(this);
     setRect(-31, -8, 70, 60); // Establece el tamaño del jugador
     player->setfilas(0);
@@ -20,6 +20,7 @@ Player::Player(const QString &picture, float limite, QGraphicsView *view)
     setPen(Qt::NoPen);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
+    collectedGold=0;
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Player::move);
@@ -146,6 +147,7 @@ void Player::decreaseLife() {
         lives--;
         emit livesChanged(lives); // Actualizar el texto de la vida
         if (lives == 0) {
+            player->setfilas(500);
             timer->stop(); // Detener el temporizador si las vidas llegan a 0
         }
     }

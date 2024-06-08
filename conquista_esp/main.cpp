@@ -29,21 +29,21 @@ int main(int argc, char *argv[]) {
     view->setFixedSize(803, 603);
 
     // Añadir jugador
-    Player *player = new Player(":/imagenes/player.png", 600, view);
+    Player *player = new Player(":/imagenes/player-Photoroom.png", 600, 100, view);
     player->setPos(view->width()/2 - player->rect().width()/2, view->height() - player->rect().height() - 10);
     scene->addItem(player);
 
     // Añadir enemigo
-    Enemy *enemy = new Enemy(2, ":/imagenes/enemigomejor-removebg-preview.png", 400);
-    enemy->setPos(200, 510);
+    Enemy *enemy = new Enemy(2, ":/imagenes/enemigomejor-removebg-preview.png", 400, 100, 300);
+    enemy->setPos(600, 510);
     scene->addItem(enemy);
 
-    Gold *gold = new Gold(":/imagenes/gold.png");
-    gold->setPos(600, 510);
+    Gold *gold = new Gold(":/imagenes/WhatsApp_Image_2024-06-07_at_9.37.19_PM-removebg-preview.png", 1200, 85);
+    gold->setPos(600, 570);
     scene->addItem(gold);
 
-    Trap *trap1 = new Trap(":/imagenes/Pit_Trap_Spikes.png");
-    trap1->setPos(100, 550);
+    Trap *trap1 = new Trap(":/imagenes/Pit_Trap_Spikes.png", 0, 32);
+    trap1->setPos(150, 578);
     scene->addItem(trap1);
 
     QGraphicsTextItem *lifeText = new QGraphicsTextItem();
