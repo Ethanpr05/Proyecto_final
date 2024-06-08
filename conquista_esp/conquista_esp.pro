@@ -10,21 +10,27 @@ CONFIG += c++17
 
 SOURCES += \
     enemy.cpp \
+    gameobject.cpp \
+    gold.cpp \
     ground.cpp \
     main.cpp \
     mainwindow.cpp \
     movement.cpp \
     player.cpp \
-    sprite.cpp
+    sprite.cpp \
+    trap.cpp
 
 HEADERS += \
     enemigo.h \
     enemy.h \
+    gameobject.h \
+    gold.h \
     ground.h \
     mainwindow.h \
     movement.h \
     player.h \
-    sprite.h
+    sprite.h \
+    trap.h
 
 FORMS += \
     mainwindow.ui

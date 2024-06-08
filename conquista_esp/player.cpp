@@ -1,6 +1,8 @@
 #include "player.h"
 #include "enemy.h"
+#include "gold.h"
 #include "ground.h"
+#include "trap.h"
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QBrush>
@@ -66,7 +68,7 @@ void Player::move() {
 
     checkCollisions();
 
-    /* // Ajustar la posición si hay colisión
+    // Ajustar la posición si hay colisión
     QList<QGraphicsItem*> collidingItems = scene()->collidingItems(this);
     for (QGraphicsItem* item : collidingItems) {
         if (typeid(*item) == typeid(Ground)) {
@@ -77,7 +79,7 @@ void Player::move() {
             setX(initialX); // Revertir la posición horizontal
             setY(initialY); // Revertir la posición vertical
         }
-    }*/
+    }
 
     // Centrar la vista en el jugador
     view->centerOn(this);
@@ -111,6 +113,22 @@ void Player::checkCollisions() {
                     setX(x() + 25); // Rebota hacia la derecha
                 }
             }
+        }else if(typeid(*item) == typeid(Trap)){
+            setX(initialX); // Revertir la posición horizontal
+            //setY(initialY); // Revertir la posición vertical
+            decreaseLife(); // Disminuir la vida
+            // Añadir efecto de rebote
+            if (x() < item->x()) {
+                setX(x() - 60);
+                velocityY = -8;                // Rebota hacia la izquierda
+            } else {
+                setX(x() + 60);
+                velocityY = -8; // Rebota hacia la derecha
+            }
+        }else if(typeid(*item) == typeid(Gold)){
+            collectedGold+=10;
+            emit StealGold(collectedGold);
+            static_cast<Gold*>(item)->handleCollision();
         }
     }
 }

@@ -20,11 +20,12 @@ public slots:
     void move();
 signals:
     void livesChanged(unsigned short int lives);
+    void StealGold(unsigned short int collectedGold);
 private:
     bool left, right, jumping;
     qreal velocityY;
     const qreal gravity = 0.5;
-    unsigned short int lives;  // Cambiar a unsigned short int
+    unsigned short int lives, collectedGold;  // Cambiar a unsigned short int
     QTimer *timer;
     QGraphicsView *view;
     QGraphicsTextItem *lifeText; // Añadir elemento de texto para mostrar la vida
