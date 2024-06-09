@@ -11,15 +11,16 @@ class sprite : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit sprite(const QString &picture, QObject *parent = nullptr);
+    explicit sprite(const QString &picture, float _limite, float _size, QObject *parent = nullptr);
 
     QTimer *timer;
     QPixmap *pixmap;
 
     float filas,columnas;
-
+    float size;
     float ancho;
     float alto;
+    float limite;
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

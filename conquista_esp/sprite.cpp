@@ -1,11 +1,13 @@
 #include "sprite.h"
 
-sprite::sprite(const QString &picture, QObject *parent) : QObject(parent)
+sprite::sprite(const QString &picture, float _limite, float _size, QObject *parent) : QObject(parent)
 {
 
     timer = new QTimer();
     filas = 0;
-    columnas = 0;
+    columnas = _size;
+    size = _size;
+    limite = _limite;
     pixmap = new QPixmap(picture);
 
     //dimensiones de c/U de las imagenes
@@ -21,8 +23,8 @@ sprite::sprite(const QString &picture, QObject *parent) : QObject(parent)
 
 void sprite::Actualizacion()
 {
-    columnas +=100;
-    if(columnas >=600)
+    columnas +=size;
+    if(columnas >=limite)
     {
         columnas =0;
     }

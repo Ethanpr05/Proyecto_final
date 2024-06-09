@@ -6,13 +6,14 @@
 #include <QGraphicsScene>
 
 
-Enemy::Enemy(int speed, const QString &picture)
+Enemy::Enemy(int speed, const QString &picture, float limite, float columnas, short int _patrolWidth)
     : Movement(speed)
 {
-    enemy = new sprite(picture);
+    enemy = new sprite(picture, limite, columnas);
     enemy->setParentItem(this);
     setRect(-37, -14, 70, 65); // Establece el tamaño del enemigo
-    enemy->setY(5);
+    enemy->setY(18);
+    enemy->setfilas(100);
     setPen(Qt::NoPen);
     //setRect(0, 0, 50, 50);
     //setBrush(QBrush(Qt::red));
@@ -21,6 +22,8 @@ Enemy::Enemy(int speed, const QString &picture)
     timer->start(16);
     //right = true;
     direction =-1;
+    patrolWidth = _patrolWidth;
+    initialX=600;
 }
 
 void Enemy::move() {
@@ -41,12 +44,11 @@ void Enemy::move() {
 
 void Enemy::checkCollisions() {
     QList<QGraphicsItem*> collidingItems = scene()->collidingItems(this);
-
     for (QGraphicsItem* item : collidingItems) {
         if (typeid(*item) == typeid(Player)) {
             direction *= -1;
             changeSprite();
-        } else if (typeid(*item) == typeid(Ground)&& (pos().x() < 0 || pos().x() > 790)) {
+        } else if (typeid(*item) == typeid(Ground)&& (pos().x() < initialX-patrolWidth || pos().x() > initialX+patrolWidth)) {
             direction *= -1;
             changeSprite();
         }
@@ -71,11 +73,11 @@ void Enemy::changeSprite()
 
     if(direction<0){
         // Cambiar filas del nuevo sprite
-        enemy->setfilas(0);
-        enemy->setY(5);
+        enemy->setfilas(100);
+        enemy->setY(18);
     }
     if(direction>0){
-        enemy->setfilas(100);
-        enemy->setY(31);
+        enemy->setfilas(0);
+        enemy->setY(14);
     }
 }

@@ -6,8 +6,10 @@
 class Trap : public GameObject {
     Q_OBJECT
 public:
-    Trap(const QString &imagePath);
+    Trap(const QString &imagePath, float limite, float columnas);
     void handleCollision() override;
+private:
+    sprite *trap;
 };
 
 #endif // TRAP_H
