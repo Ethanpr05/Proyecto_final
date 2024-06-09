@@ -1,5 +1,5 @@
 #include "ground.h"
 
-Ground::Ground() {
-    setPixmap(QPixmap(":/imagenes/ground.jpg"));
+Ground::Ground(const QString &picture) {
+    setPixmap(QPixmap(picture));
 }

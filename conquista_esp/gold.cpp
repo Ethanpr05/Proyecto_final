@@ -6,7 +6,7 @@ Gold::Gold(const QString &imagePath, float limite, float columnas) {
     goldpath->setParentItem(this);
     setRect(-15, -35, 20, 20); // Establece el tamaño
     goldpath->setfilas(0);
-    //setPen(Qt::NoPen);
+    setPen(Qt::NoPen);
 }
 
 void Gold::handleCollision() {

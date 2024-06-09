@@ -5,7 +5,7 @@
 
 class Ground : public QGraphicsPixmapItem {
 public:
-    Ground();
+    Ground(const QString &picture);
 };
 
 #endif // GROUND_H
