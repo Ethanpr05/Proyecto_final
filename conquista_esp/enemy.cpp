@@ -6,10 +6,10 @@
 #include <QGraphicsScene>
 
 
-Enemy::Enemy(int speed, const QString &picture, float limite, float columnas, short int _patrolWidth)
+Enemy::Enemy(int speed, const QString &picture, float limite, float size, short int _initialX)
     : Movement(speed)
 {
-    enemy = new sprite(picture, limite, columnas);
+    enemy = new sprite(picture, limite, size);
     enemy->setParentItem(this);
     setRect(-37, -14, 70, 65); // Establece el tamaño del enemigo
     enemy->setY(18);
@@ -22,8 +22,8 @@ Enemy::Enemy(int speed, const QString &picture, float limite, float columnas, sh
     timer->start(16);
     //right = true;
     direction =-1;
-    patrolWidth = _patrolWidth;
-    initialX=600;
+    patrolWidth = 150;
+    initialX=_initialX;
 }
 
 void Enemy::move() {

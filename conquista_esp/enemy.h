@@ -9,7 +9,7 @@
 class Enemy : public QObject, public QGraphicsRectItem, public Movement {
     Q_OBJECT
 public:
-    explicit Enemy(int speed, const QString &picture, float limite, float columnas, short int patrolWidth);
+    explicit Enemy(int speed, const QString &picture, float limite, float size, short int _initialX);
 
 public slots:
     void move();

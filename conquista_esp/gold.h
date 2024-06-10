@@ -7,7 +7,7 @@
 class Gold : public GameObject {
     Q_OBJECT
 public:
-    Gold(const QString &imagePath, float limite, float columnas);
+    Gold(const QString &imagePath, float limite, float sise);
     void handleCollision() override;
 private:
     sprite *goldpath;
