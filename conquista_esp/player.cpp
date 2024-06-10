@@ -142,13 +142,11 @@ void Player::checkCollisions() {
             emit StealGold(collectedGold);
             static_cast<Gold*>(item)->handleCollision();
         }
-
-        if (!onGround && !jumping) {
-            velocityY += gravity;
-            setY(y() + velocityY);
-        }
     }
-
+    if (!onGround && !jumping) {
+        velocityY += gravity;
+        setY(y() + velocityY);
+    }
 }
 /*void Player::handleCollisionWithEnemy() {
     // Frenar el movimiento al colisionar con el enemigo
