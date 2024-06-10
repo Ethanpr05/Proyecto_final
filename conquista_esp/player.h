@@ -12,7 +12,7 @@
 class Player : public QObject, public QGraphicsRectItem, public Movement {
     Q_OBJECT
 public:
-    Player(const QString &picture, float limite, float columnas, QGraphicsView *view);
+    Player(const QString &picture, float limite, float size, QGraphicsView *view);
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
