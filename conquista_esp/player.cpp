@@ -14,9 +14,9 @@ Player::Player(const QString &picture, float limite, float columnas, QGraphicsVi
     velocityY(0), lives(30), view(view) {
     player = new sprite(picture, limite, columnas);
     player->setParentItem(this);
-    setRect(-31, -8, 70, 60); // Establece el tamaño del jugador
+    setRect(-31, -20, 70, 60); // Establece el tamaño del jugador
     player->setfilas(0);
-    player->setY(20);
+    player->setY(10);
     setPen(Qt::NoPen);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
@@ -41,8 +41,7 @@ void Player::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void Player::move() {
-    qreal initialX = x();
-    qreal initialY = y();
+
     qreal x = pos().x();
     Movement::update(x);
     setX(x);
@@ -69,7 +68,7 @@ void Player::move() {
 
     checkCollisions();
 
-    // Ajustar la posición si hay colisión
+    /*// Ajustar la posición si hay colisión
     QList<QGraphicsItem*> collidingItems = scene()->collidingItems(this);
     for (QGraphicsItem* item : collidingItems) {
         if (typeid(*item) == typeid(Ground)) {
@@ -80,7 +79,7 @@ void Player::move() {
             setX(initialX); // Revertir la posición horizontal
             setY(initialY); // Revertir la posición vertical
         }
-    }
+    }*/
 
     // Centrar la vista en el jugador
     view->centerOn(this);
@@ -94,13 +93,25 @@ void Player::checkCollisions() {
     QList<QGraphicsItem*> collidingItems = scene()->collidingItems(this);
 
     for (QGraphicsItem* item : collidingItems) {
-        if (typeid(*item) == typeid(Ground)) {
-            setY(510);
-            jumping = false;
-            velocityY = 0;
+        if (typeid(*item) != typeid(Ground)){
+            onGround=false;
+        }
+        if ((typeid(*item) == typeid(Ground))) {
+            //setY(510);
+            if(y() >= item->y()){
+                //setX(initialX); // Revertir la posición horizontal
+                setY(initialY);
+                velocityY=2;
+            }
+            else{jumping = false;
+                velocityY = 0;
+                setY(static_cast<Ground*>(item)->y() - item->boundingRect().height());
+                onGround = true;
+            }
+
         } else if (typeid(*item) == typeid(Enemy)) {
             // Si se colisiona con un enemigo desde arriba, rebota sin hacerse daño
-            if (y() < item->y()) {
+            if ((y() <= item->y())) {
                 velocityY = -5;
             } else {
                 // Si se colisiona con un enemigo desde los lados, rebota y pierde vida
@@ -120,18 +131,24 @@ void Player::checkCollisions() {
             decreaseLife(); // Disminuir la vida
             // Añadir efecto de rebote
             if (x() < item->x()) {
-                setX(x() - 60);
-                velocityY = -8;                // Rebota hacia la izquierda
+                setX(x() - 30);
+                velocityY = -5;                // Rebota hacia la izquierda
             } else {
-                setX(x() + 60);
-                velocityY = -8; // Rebota hacia la derecha
+                setX(x() + 30);
+                velocityY = -5; // Rebota hacia la derecha
             }
         }else if(typeid(*item) == typeid(Gold)){
             collectedGold+=10;
             emit StealGold(collectedGold);
             static_cast<Gold*>(item)->handleCollision();
         }
+
+        if (!onGround && !jumping) {
+            velocityY += gravity;
+            setY(y() + velocityY);
+        }
     }
+
 }
 /*void Player::handleCollisionWithEnemy() {
     // Frenar el movimiento al colisionar con el enemigo

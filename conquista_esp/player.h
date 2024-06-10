@@ -22,7 +22,7 @@ signals:
     void livesChanged(unsigned short int lives);
     void StealGold(unsigned short int collectedGold);
 private:
-    bool left, right, jumping;
+    bool left, right, jumping, onGround;
     qreal velocityY;
     const qreal gravity = 0.5;
     unsigned short int lives, collectedGold;  // Cambiar a unsigned short int

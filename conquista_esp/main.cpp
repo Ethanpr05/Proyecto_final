@@ -30,9 +30,9 @@ int main(int argc, char *argv[]) {
     ground->setPos(0, 560);
     scene->addItem(ground);*/
 
-    /*Ground *plataform1 = new Ground(":/imagenes/plataformalevel1.png");
-    plataform1->setPos(400, 400);
-    scene->addItem(plataform1);*/
+    Ground *plataform1 = new Ground(":/imagenes/plataformalevel1.png");
+    plataform1->setPos(400, 460);
+    scene->addItem(plataform1);
 
     QGraphicsView *view = new QGraphicsView(scene);
     view->setFixedSize(803, 603);
