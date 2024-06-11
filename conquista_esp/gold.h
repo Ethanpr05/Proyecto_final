@@ -1,14 +1,14 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-#include "gameobject.h"
 #include "sprite.h"
 
-class Gold : public GameObject {
+class Gold : public QObject, public QGraphicsRectItem {
     Q_OBJECT
 public:
     Gold(const QString &imagePath, float limite, float sise);
-    void handleCollision() override;
+    void handleCollision();
+    ~Gold();
 private:
     sprite *goldpath;
 };

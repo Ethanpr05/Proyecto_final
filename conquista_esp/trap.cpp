@@ -9,7 +9,6 @@ Trap::Trap(const QString &imagePath, float limite, float size) {
     setPen(Qt::NoPen);
 }
 
-void Trap::handleCollision() {
-
-
+Trap::~Trap() {
+    delete trap;
 }

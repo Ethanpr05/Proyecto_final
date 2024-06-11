@@ -1,13 +1,14 @@
 #ifndef SEATRAP_H
 #define SEATRAP_H
 
-#include "gameobject.h"
+#include "sprite.h"
 
-class SeaTrap : public GameObject {
+class SeaTrap : public QObject, public QGraphicsRectItem {
     Q_OBJECT
 public:
-    SeaTrap(unsigned short int _speed);
-    void handleCollision() override;
+    SeaTrap(unsigned short int _speed, const QString &imagePath, float limite, float size);
+    void handleCollision();
+    ~SeaTrap();
 private:
     unsigned short int speed;
     QTimer *timer;

@@ -15,5 +15,12 @@
         <file>imagenes/plataforma1level3.png</file>
         <file>imagenes/plataforma1level1.png</file>
         <file>imagenes/Kinglevel1-removebg-preview.png</file>
+        <file>imagenes/seaTrap1.0level3-removebg-preview.png</file>
+        <file>imagenes/seaTrap2.0level3-removebg-preview.png</file>
+        <file>imagenes/seaTrap3.0level3-removebg-preview.png</file>
+        <file>imagenes/playerbarco__1_-removebg-preview.png</file>
+        <file>imagenes/fonfolevel2.png</file>
+        <file>imagenes/GameOver.png</file>
+        <file>imagenes/win.png</file>
     </qresource>
 </RCC>
