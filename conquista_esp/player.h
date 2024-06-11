@@ -15,6 +15,7 @@ public:
     Player(const QString &picture, float limite, float size, QGraphicsView *view);
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
+    ~Player();
 
 public slots:
     void move();
@@ -31,7 +32,6 @@ private:
     QGraphicsView *view;
     QGraphicsTextItem *lifeText; // Añadir elemento de texto para mostrar la vida
     void checkCollisions();
-    void handleCollisionWithEnemy();
     void decreaseLife();
 
     sprite *player;

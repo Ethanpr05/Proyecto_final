@@ -16,5 +16,6 @@
 void level1(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level);
 void level2(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level);
 void level3(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level);
+void changeLevel(QGraphicsScene *scene, QGraphicsView *view, unsigned short int &whichlvl);
 
 #endif // LEVELS_H

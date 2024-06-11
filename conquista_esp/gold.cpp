@@ -13,3 +13,7 @@ void Gold::handleCollision() {
     scene()->removeItem(this);
     delete this;
 }
+
+Gold::~Gold() {
+    delete goldpath;
+}

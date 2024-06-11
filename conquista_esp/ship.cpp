@@ -1,19 +1,23 @@
 #include "ship.h"
 #include "qgraphicsscene.h"
 #include "seatrap.h"
+#include "seatreasure.h"
 #include <QTimer>
 
-Ship::Ship(int speed)
+Ship::Ship(int speed, const QString &picture, float limite, float size)
     : Movement(speed) {
 
-    setRect(0, 0, 50, 90);
-    setBrush(QColorConstants::Svg::brown);
+    ship = new sprite(picture, limite, size);
+    ship->setParentItem(this);
+    setRect(-30, -40, 65, 80);
+    setPen(Qt::NoPen);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Ship::move);
     timer->start(16);
     lives = 3;
+    collectedGold=0;
 }
 
 void Ship::keyPressEvent(QKeyEvent *event) {
@@ -32,6 +36,16 @@ void Ship::move()
     setX(x);
 }
 
+void Ship::collectGold()
+{
+    collectedGold++;
+    emit StealGold(collectedGold);
+    if(collectedGold>=4){
+        emit won();
+    }
+
+}
+
 void Ship::checkCollisions()
 {
     if (lives > 0) {
@@ -42,4 +56,9 @@ void Ship::checkCollisions()
             timer->stop(); // Detener el temporizador si las vidas llegan a 0
         }
     }
+}
+
+Ship::~Ship() {
+    delete ship;
+    delete timer;
 }

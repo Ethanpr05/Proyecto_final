@@ -1,13 +1,13 @@
 #ifndef TRAP_H
 #define TRAP_H
 
-#include "gameobject.h"
+#include "sprite.h"
 
-class Trap : public GameObject {
+class Trap : public QObject, public QGraphicsRectItem {
     Q_OBJECT
 public:
     Trap(const QString &imagePath, float limite, float size);
-    void handleCollision() override;
+    ~Trap();
 private:
     sprite *trap;
 };

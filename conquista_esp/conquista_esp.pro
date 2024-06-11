@@ -10,7 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     enemy.cpp \
-    gameobject.cpp \
+    game.cpp \
     gold.cpp \
     ground.cpp \
     levels.cpp \
@@ -19,6 +19,7 @@ SOURCES += \
     movement.cpp \
     player.cpp \
     seatrap.cpp \
+    seatreasure.cpp \
     ship.cpp \
     sprite.cpp \
     trap.cpp
@@ -26,7 +27,7 @@ SOURCES += \
 HEADERS += \
     enemigo.h \
     enemy.h \
-    gameobject.h \
+    game.h \
     gold.h \
     ground.h \
     levels.h \
@@ -34,6 +35,7 @@ HEADERS += \
     movement.h \
     player.h \
     seatrap.h \
+    seatreasure.h \
     ship.h \
     sprite.h \
     trap.h
