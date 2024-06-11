@@ -141,6 +141,9 @@ void Player::checkCollisions() {
             collectedGold+=10;
             emit StealGold(collectedGold);
             static_cast<Gold*>(item)->handleCollision();
+            if(collectedGold>=40){
+                emit won();
+            }
         }
     }
     if (!onGround && !jumping) {
