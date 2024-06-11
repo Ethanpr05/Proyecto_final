@@ -25,6 +25,7 @@ Player::Player(const QString &picture, float limite, float size, QGraphicsView *
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Player::move);
     timer->start(16); // Aproximadamente 60 FPS
+    //connect(this, &::Player::itemChange, this);
 }
 
 void Player::keyPressEvent(QKeyEvent *event) {
@@ -67,6 +68,19 @@ void Player::move() {
 
     checkCollisions();
 
+    /*// Ajustar la posición si hay colisión
+    QList<QGraphicsItem*> collidingItems = scene()->collidingItems(this);
+    for (QGraphicsItem* item : collidingItems) {
+        if (typeid(*item) == typeid(Ground)) {
+            setY(510);
+            jumping = false;
+            velocityY = 0;
+        } else if (typeid(*item) == typeid(Enemy)) {
+            setX(initialX); // Revertir la posición horizontal
+            setY(initialY); // Revertir la posición vertical
+        }
+    }*/
+
     // Centrar la vista en el jugador
     view->centerOn(this);
     setFocus();
@@ -83,7 +97,9 @@ void Player::checkCollisions() {
             onGround=false;
         }
         if ((typeid(*item) == typeid(Ground))) {
+            //setY(510);
             if(y() >= item->y()){
+                //setX(initialX); // Revertir la posición horizontal
                 setY(initialY);
                 velocityY=2;
             }
@@ -111,6 +127,7 @@ void Player::checkCollisions() {
             }
         }else if(typeid(*item) == typeid(Trap)){
             setX(initialX); // Revertir la posición horizontal
+            //setY(initialY); // Revertir la posición vertical
             decreaseLife(); // Disminuir la vida
             // Añadir efecto de rebote
             if (x() < item->x()) {
@@ -134,6 +151,14 @@ void Player::checkCollisions() {
         setY(y() + velocityY);
     }
 }
+/*void Player::handleCollisionWithEnemy() {
+    // Frenar el movimiento al colisionar con el enemigo
+    left = false;
+    right = false;
+    velocityY = -5;
+    decreaseLife(); // Disminuir la vida
+
+}*/
 
 void Player::decreaseLife() {
     if (lives > 0) {
@@ -147,7 +172,5 @@ void Player::decreaseLife() {
 }
 
 Player::~Player() {
-    delete player;
-    delete timer;
-    delete lifeText;
+
 }

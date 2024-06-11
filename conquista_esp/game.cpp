@@ -40,9 +40,3 @@ void Game::loadLevel() {
 
     lastLoadedLevel = currentLevel; // Actualizar el nivel cargado
 }
-
-Game::~Game() {
-    delete scene;
-    delete player; // Asegúrate de que player se inicializa correctamente antes de su uso
-    delete timer;
-}

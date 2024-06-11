@@ -12,7 +12,6 @@ public:
     Game(QGraphicsView *view);
     void start();
     void loadLevel();
-    ~Game();
 
 public slots:
     void checkLevel();

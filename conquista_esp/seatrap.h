@@ -7,9 +7,9 @@ class SeaTrap : public QObject, public QGraphicsRectItem {
     Q_OBJECT
 public:
     SeaTrap(unsigned short int _speed, const QString &imagePath, float limite, float size);
-    void handleCollision();
     ~SeaTrap();
 private:
+    void handleCollision();
     unsigned short int speed;
     QTimer *timer;
     sprite *seatrap;
@@ -18,3 +18,4 @@ public slots:
 };
 
 #endif // SEATRAP_H
+

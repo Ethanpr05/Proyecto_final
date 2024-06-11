@@ -18,7 +18,6 @@ Enemy::Enemy(int speed, const QString &picture, float limite, float size, short 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Enemy::move);
     timer->start(16);
-    //right = true;
     direction =-1;
     patrolWidth = 150;
     initialX=_initialX;
@@ -68,5 +67,5 @@ void Enemy::changeSprite()
 }
 
 Enemy::~Enemy() {
-    delete enemy;
+
 }

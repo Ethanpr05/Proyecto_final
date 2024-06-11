@@ -15,3 +15,4 @@ private:
 
 #endif // GOLD_H
 
+
