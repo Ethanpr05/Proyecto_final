@@ -13,10 +13,13 @@ SOURCES += \
     gameobject.cpp \
     gold.cpp \
     ground.cpp \
+    levels.cpp \
     main.cpp \
     mainwindow.cpp \
     movement.cpp \
     player.cpp \
+    seatrap.cpp \
+    ship.cpp \
     sprite.cpp \
     trap.cpp
 
@@ -26,9 +29,12 @@ HEADERS += \
     gameobject.h \
     gold.h \
     ground.h \
+    levels.h \
     mainwindow.h \
     movement.h \
     player.h \
+    seatrap.h \
+    ship.h \
     sprite.h \
     trap.h
 

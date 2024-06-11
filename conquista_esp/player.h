@@ -21,6 +21,7 @@ public slots:
 signals:
     void livesChanged(unsigned short int lives);
     void StealGold(unsigned short int collectedGold);
+    void won();
 private:
     bool left, right, jumping, onGround;
     qreal velocityY;
