@@ -11,7 +11,6 @@ class Enemy : public QObject, public QGraphicsRectItem, public Movement {
 public:
     explicit Enemy(int speed, const QString &picture, float limite, float size, short int _initialX);
     ~Enemy();
-
 public slots:
     void move();
 

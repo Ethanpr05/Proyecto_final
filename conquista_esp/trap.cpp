@@ -10,5 +10,5 @@ Trap::Trap(const QString &imagePath, float limite, float size) {
 }
 
 Trap::~Trap() {
-    delete trap;
+
 }

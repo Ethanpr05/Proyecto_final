@@ -15,5 +15,5 @@ void Gold::handleCollision() {
 }
 
 Gold::~Gold() {
-    delete goldpath;
+
 }

@@ -126,7 +126,6 @@ void level1(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level)
 
     QObject::connect(player, &Player::livesChanged, [=](unsigned short int lives) {
         lifeText->setPlainText(QString("Lives: %1").arg(lives));
-
         if (lives == 0) {
             QPixmap backgroundPixmap(":/imagenes/GameOver.png");
             QPixmap scaledBackground = backgroundPixmap.scaled(scene->width(), scene->height());
@@ -189,7 +188,6 @@ void level2(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level)
 
     QObject::connect(ship1, &Ship::livesChanged, [=](unsigned short int lives) {
         lifeText->setPlainText(QString("Lives: %1").arg(lives));
-
         if (lives == 0) {
             QPixmap backgroundPixmap(":/imagenes/GameOver.png");
             QPixmap scaledBackground = backgroundPixmap.scaled(scene->width(), scene->height());
@@ -254,7 +252,7 @@ void level3(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level)
     gold->setPos(600, 560);
     scene->addItem(gold);
     Gold *gold1 = new Gold(":/imagenes/WhatsApp_Image_2024-06-07_at_9.37.19_PM-removebg-preview.png", 1200, 85);
-    gold1->setPos(50, 560);
+    gold1->setPos(1000, 560);
     scene->addItem(gold1);
     Gold *gold2 = new Gold(":/imagenes/WhatsApp_Image_2024-06-07_at_9.37.19_PM-removebg-preview.png", 1200, 85);
     gold2->setPos(530, 380);
@@ -294,7 +292,6 @@ void level3(QGraphicsScene *scene, QGraphicsView *view, unsigned short &level)
     // Conectar la actualización del texto de vidas al jugador
     QObject::connect(player, &Player::livesChanged, [=](unsigned short int lives) {
         lifeText->setPlainText(QString("Lives: %1").arg(lives));
-
         if (lives == 0) {
             QPixmap backgroundPixmap(":/imagenes/GameOver.png");
             QPixmap scaledBackground = backgroundPixmap.scaled(scene->width(), scene->height());

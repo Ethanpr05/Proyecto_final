@@ -58,7 +58,7 @@ void Ship::checkCollisions()
     }
 }
 
+
 Ship::~Ship() {
-    delete ship;
-    delete timer;
+
 }

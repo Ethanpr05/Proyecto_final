@@ -5,6 +5,8 @@
 #include <QRandomGenerator>
 
 SeaTrap::SeaTrap(unsigned short _speed, const QString &imagePath, float limite, float size) {
+    /*setRect(0, 0, 50, 50);
+    setBrush(QColorConstants::Svg::brown);*/
     seatrap = new sprite(imagePath, limite, size);
     seatrap->setParentItem(this);
     setRect(-45, -45, 65, 55); // Establece el tamaño
@@ -43,6 +45,5 @@ void SeaTrap::move() {
 }
 
 SeaTrap::~SeaTrap() {
-    delete seatrap;
-    delete timer;
+
 }

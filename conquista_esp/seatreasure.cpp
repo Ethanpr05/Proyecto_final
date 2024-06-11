@@ -44,7 +44,7 @@ void SeaTreasure::move() {
     }
 }
 
+
 SeaTreasure::~SeaTreasure() {
-    delete seatreasure;
-    delete timer;
+
 }
